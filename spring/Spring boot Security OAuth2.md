@@ -129,3 +129,94 @@ google:
 ```
 
 위와 같이 scope를 추가해주었고 정상적으로 서비스를 호출하는 것을 확인했다.
+
+### 프론트에서 xhr을 이용하여 토큰 값을 가져오지 못하는 이슈
+Security의 OAuth2를 이용해서 reponse body로 토큰 값을 설정하였으나
+redirect를 이용한다면 더 이상 클라이언트쪽에서 제어할 방법이 없었기에 xhr을 이용해서 호출했더니 cors에러로 작동하지 않았다.
+
+이는 각 로그인 페이지에서의 cors 에러이므로 개발자가 해결할 방법이 없어 여러 방안을 시도해보았다.
+#### 1. 인증 완료 핸들러 이후 커스텀 컨트롤러로 리다이렉트
+처음에는 간단하게 완료된 후에 내 컨트롤러로 리다이렉트 하고 callback.html 을 만들어 세션에 저장 후 프론트 페이지로 리다이렉트 시키려고 했다.
+
+success handler, custom oauth2 controller
+```java
+public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {   
+
+		... 토큰 생성 로직
+        request.setAttribute("token", res);  
+        // 내 컨트롤러로 리다이렉트
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/oauth2/callback");  
+        dispatcher.forward(request, response);   
+}
+
+//// 내 컨트롤러
+@RequestMapping("oauth2")  
+@Controller  
+public class OAuth2Controller {  
+  
+    @Operation(description = "소셜 로그인 이후 콜백")  
+    @GetMapping("/callback")  
+    public String callback(HttpServletRequest request, Model model) {  
+        model.addAttribute("token", request.getAttribute("token"));  
+        return "callback";  
+    }
+}
+```
+
+callback.html
+```html
+<!DOCTYPE html>  
+<html>  
+	<body>   
+		<script>  
+		    sessionStorage.setItem("token", "[[${token}]]");  
+		    // 이후 다른 페이지로 이동  
+		    window.location.href = "http://localhost:3000/callback";  
+		</script>  
+	</body>  
+</html>
+```
+
+프론트 페이지에 값을 넘겨줄 방법이 없어 session으로 넘겨주려고 하는데
+테스트 시 session이 비어있는 것을 확인했다.
+
+세션은 각 도메인 별로 저장이 되므로 localhost:3000에는 저장이 안되고 당연히 꺼내쓸 수도 없었다.
+
+그렇기에 이 방법은 사용할 수가 없었다.
+### 2. 클라이언트로 리다이렉트 시 url에 토큰 정보 전송
+url에 토큰을 전송하는 것은 보안적으로 문제가 있다고 생각이 되었기에 시도도 해보지 않았다..
+### 3. 인증 토큰을 클라이언트에서 가져오자
+인증 토큰을 클라이언트에서 가져와 xhr을 이용하여 서버로 인증 토큰을 전송하는 방법이 있겠다.
+클라이언트에서 `client_id`를 알아야 한다는 점이 껄끄러웠고
+인증 토큰을 받는 api를 새로 작성해야 했기에 선택하지 않았다.
+### 4. 인증 완료 후 핸들러에서 클라이언트 주소로 리다이렉트 ✔️
+최종적으로 이 방법을 선택했다.
+
+생성한 토큰을 클라이언트에게 쿠키로 토큰을 응답한다.
+토큰 응답 시 클라이언트에서 받을 수 있게 반드시 path를 `"/"`로 설정해주어야 한다.
+클라이언트가 토큰 값을 가져와야 하므로 HttpOnly 속성은 설정하지 않는다
+	해당 속성을 설정하게 되면 `document.cookie`로 값을 가져올 수가 없다.
+
+```java
+@Override  
+public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {  
+
+	...토큰 생성 로직
+
+	// accessToken과 refreshToken의 쿠키를 생성한다.
+    Cookie accessToken = new Cookie("accessToken", tokenDto.accessToken());  
+    Cookie refreshToken = new Cookie("refreshToken", tokenDto.refreshToken());  
+	// 클라이언트에서 쿠키를 받을 수 있게 설정한다.
+    accessToken.setPath("/");  
+    refreshToken.setPath("/");  
+    // 클라이언트가 토큰 값을 가져와야 하므로 httpOnly는 설정하지 않는다.
+  
+    response.addCookie(accessToken);  
+    response.addCookie(refreshToken);  
+  
+    String clientHost = propertyConfig.getClientHost();  
+    response.sendRedirect(clientHost);  
+}
+```
+
+위와 같이 설정하고 테스트한 결과 정상적으로 쿠키를 응답받고 사용할 수 있는 것을 확인했다.
