@@ -2,7 +2,7 @@
 자바 가상 머신으로, JVM만 있다면 자바로 작성된 언어를 os와 관계 없이 실행시킬 수 있게 하기 위해 만들어졌다.
 
 ### JVM 동작 과정
-![[Pasted image 20241021112132.png]]
+![이미지](/이미지/Pasted%20image%2020241021112132.png)
 1. 자바 프로그램 실행 시 OS로부터 메모리를 할당 받는다.
 2. 자바 컴파일러 javac가 java파일을 .class로 컴파일 한다.
 3. 클래스 로더는 동적 로딩을 통해 필요한 클래스들을 로딩 및 링크하여 런타임 데이터 영역(실질적인 메모리를 할당 받아 관리하는 영역)에 올린다.
@@ -11,7 +11,7 @@
 
 
 #### 클래스 로더 (Class Loader)
-![[Pasted image 20241021112118.png]]
+![이미지](/이미지/Pasted%20image%2020241021112118.png)
 바이트 코드들을 엮어 JVM의 메모리 영역인 Runtime Data Areas에 배치
 * JVM 내로 클래스 파일을 동적으로 로드하고 링크를 통해 배치하는 작업을 수행
 * 어플리케이션에서 필요한 경우 동적으로 메모리에 적재
@@ -41,7 +41,7 @@
 	* Stop The World (STW): GC를 수행하기 위해 JVM이 프로그램 실행을 멈추는 현상
 
 ### 런타임 데이터 영역 (Runtime Data Area)
-![[Pasted image 20241021115009.png]]
+![이미지](/이미지/Pasted%20image%2020241021115009.png)
 * JVM의 메모리 영역으로, 자바 애플리케이션을 실행할 때 사용되는 데이터들을 적재하는 영역
 * 영역은 크게 Method Area, Heap Area, Stack Area, Pc Register, Native Method Stack으로 나뉜다.
 

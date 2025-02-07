@@ -110,7 +110,7 @@ public class CommonLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 OAuth2AuthenticationFilter부터 쭉 디버깅해서 확인한 결과
 
-![[Pasted image 20241121224406.png]]
+![이미지](/이미지/Pasted%20image%2020241121224406.png)
 scope에 `openid`라는 항목이 있으면 커스텀한 서비스를 호출하지 않는 것을 볼 수 있었다.
 properties를 설정할 때 scope를 지정하지 않으면 자동으로 `openid`, `email`, `profile`로 초기값이 잡혀있는 것이었기에
 

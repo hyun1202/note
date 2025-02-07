@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "디자인 패턴/4장.md",
+                "file": "cs/java/JVM 구조.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4장"
+              "title": "JVM 구조"
             }
           },
           {
@@ -59,8 +59,7 @@
               "title": "프로젝트 보완"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -188,8 +187,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -201,53 +199,54 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "44c851bd58c6d088",
+  "active": "41c45978734e022d",
   "lastOpenFiles": [
-    "cs/java/구상 클래스.md",
-    "cs/SOLID 원칙.md",
-    "cs/디자인 패턴/어댑터 패턴.md",
-    "이미지/Pasted image 20241024115036.png",
-    "코딩테스트/그냥 알고리즘 관련.. 의문.md",
-    "cs/디자인 패턴/4장.md",
-    "cs/디자인 패턴/커맨드 패턴.md",
+    "cs/java/스프링 부트 자동 구성.md",
+    "cs/java/Collectors.md",
+    "cs/java/HashCode & Equals.md",
     "cs/java/Garbage Collection(GC).md",
-    "Welcome.md",
-    "코딩테스트/이론/알고리즘/정수론/유클리드 호제법.md",
+    "cs/SOLID 원칙.md",
+    "cs/OAuth.md",
     "cs/java/JVM 구조.md",
+    "cs/java/구상 클래스.md",
+    "cs/java/5. 동시성 문제.md",
+    "cs/java/4. AspectJ.md",
+    "cs/java/3. AOP.md",
+    "cs/java/2. 빈 후처리기.md",
+    "cs/java/1. 동적 프록시.md",
+    "cs/디자인 패턴/커맨드 패턴.md",
+    "cs/디자인 패턴/어댑터 패턴.md",
+    "cs/디자인 패턴/4장.md",
+    "코딩테스트/Java 정렬(Comparable, Comparator).md",
+    "코딩테스트/그냥 알고리즘 관련.. 의문.md",
+    "코딩테스트/이론/자료구조/우선순위 큐.md",
+    "코딩테스트/이론/자료구조/스택과 큐.md",
+    "코딩테스트/이론/알고리즘/그리디 알고리즘.md",
+    "코딩테스트/이론/알고리즘/탐색/이진 탐색(Binary Search).md",
+    "코딩테스트/이론/알고리즘/탐색/너비 우선 탐색(BFS).md",
+    "코딩테스트/이론/알고리즘/탐색/깊이 우선 탐색(DFS).md",
+    "코딩테스트/이론/알고리즘/정수론/유클리드 호제법.md",
+    "코딩테스트/이론/알고리즘/정수론/오일러의 피.md",
+    "이미지/Pasted image 20250120104003.png",
+    "이미지/Pasted image 20250120103540.png",
+    "이미지/Pasted image 20250120103436.png",
+    "이미지/Pasted image 20250120101552.png",
+    "이미지/Pasted image 20241121224406.png",
+    "무제 폴더/트러블 슈팅/spring",
+    "무제 폴더/트러블 슈팅",
+    "무제 폴더/명령어",
+    "이미지/Pasted image 20241024115036.png",
     "이미지/Pasted image 20241021113640.png",
     "이미지/Pasted image 20241021115009.png",
     "이미지/Pasted image 20241021112132.png",
     "이미지/Pasted image 20241021112118.png",
     "cs/java",
     "cs",
-    "코딩테스트/이론/알고리즘/정수론/오일러의 피.md",
     "cs/디자인 패턴",
-    "코딩테스트/이론/알고리즘/정수론/소수(에라토스테네스의 체).md",
-    "이미지/Pasted image 20241016192309.png",
-    "이미지/Pasted image 20241016192255.png",
-    "코딩테스트/이론/알고리즘/그리디 알고리즘.md",
     "코딩테스트/이론/알고리즘/정수론",
-    "코딩테스트/문제/블루레이.md",
-    "코딩테스트/이론/알고리즘/탐색/이진 탐색(Binary Search).md",
-    "무제 폴더/프로젝트 보완.md",
     "무제 폴더",
-    "이미지/Pasted image 20240927203403.png",
-    "코딩테스트/이론/알고리즘/탐색/너비 우선 탐색(BFS).md",
-    "코딩테스트/이론/알고리즘/슬라이딩윈도우/개념 및 예제.md",
-    "코딩테스트/Java 정렬(Comparable, Comparator).md",
-    "이미지/Pasted image 20240924175658.png",
-    "이미지/Pasted image 20240924174437.png",
-    "코딩테스트/이론/알고리즘/탐색/깊이 우선 탐색(DFS).md",
-    "코딩테스트/문제/수 정렬하기 3.md",
     "코딩테스트/이론/알고리즘/탐색",
-    "코딩테스트/이론/자료구조/우선순위 큐.md",
-    "코딩테스트/이론/자료구조/스택과 큐.md",
-    "코딩테스트/이론/알고리즘/정렬/7. 계수 정렬(Counting Sort).md",
-    "코딩테스트/이론/알고리즘/정렬/1. 버블 정렬(Bubble Sort).md",
     "코딩테스트/이론",
-    "코딩테스트",
-    "코딩테스트/이론/알고리즘/정렬",
-    "문제/스택과 큐/스택으로 오름차순 수열 만들기",
     "무제 파일.canvas",
     "무제 파일 1.canvas"
   ]
