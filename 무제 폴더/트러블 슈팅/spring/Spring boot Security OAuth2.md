@@ -220,3 +220,7 @@ public void onAuthenticationSuccess(HttpServletRequest request, HttpServletRespo
 ```
 
 위와 같이 설정하고 테스트한 결과 정상적으로 쿠키를 응답받고 사용할 수 있는 것을 확인했다.
+
+
+
+### 로그인 완료에도 에러가 나는 이슈
