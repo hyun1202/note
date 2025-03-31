@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cs/java/9. 동시성 컬렉션.md",
+                "file": "cs/java/10. 스레드 풀과 Executor.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9. 동시성 컬렉션"
+              "title": "10. 스레드 풀과 Executor"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "35fb3bf58e9a05be",
@@ -95,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "cs/java/9. 동시성 컬렉션.md",
+                "file": "cs/java/10. 스레드 풀과 Executor.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "9. 동시성 컬렉션 의 백링크"
+              "title": "10. 스레드 풀과 Executor 의 백링크"
             }
           },
           {
@@ -166,8 +165,10 @@
   },
   "active": "749388e222f32d75",
   "lastOpenFiles": [
-    "cs/java/8. 동기화와 원자적 연산.md",
+    "cs/java/11. Future.md",
+    "cs/java/10. 스레드 풀과 Executor.md",
     "cs/java/9. 동시성 컬렉션.md",
+    "cs/java/8. 동기화와 원자적 연산.md",
     "cs/java/7. 생산자 소비자 문제.md",
     "cs/db/격리 수준(Isolation Level)에 따른 이상 현상.md",
     "cs/java/6.  멀티 스레드 동기화 기법.md",
@@ -192,8 +193,6 @@
     "cs/java/2. 빈 후처리기.md",
     "cs/java/1. 동적 프록시.md",
     "cs/디자인 패턴/커맨드 패턴.md",
-    "cs/디자인 패턴/어댑터 패턴.md",
-    "cs/디자인 패턴/4장.md",
     "이미지/Pasted image 20250120104003.png",
     "이미지/Pasted image 20250120103540.png",
     "이미지/Pasted image 20250120103436.png",
