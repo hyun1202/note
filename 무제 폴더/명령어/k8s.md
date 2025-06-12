@@ -41,20 +41,53 @@ sudo sysctl --system
 ```
 ## 4. k8s 설치
 * 도커가 먼저 설치되어있어야 함
+
+containerd 설치
+```
+# 커널 모듈 및 네트워크 설정(마스터 노드 진행)
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+
+#
+modprobe overlay
+modprobe br_netfilter
+
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+
+sysctl --system
+
+# containerd 설치
+apt install -y containerd
+
+mkdir -p /etc/containerd
+
+containerd config default | sudo tee /etc/containerd/config.toml
+
+vi /etc/containerd/config.toml
+# SystemdCgroup을 false에서 true로 변경
+# sandbox_image를 registry.k8s.io/pause:3.8에서 registry.k8s.io/pause:3.9로 변경 
+
+systemctl restart containerd
+```
+
 ```bash
-# 패키지 다운로드
-sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
+apt-get update
+apt-get install -y apt-transport-https ca-certificates curl gpg
 
-sudo mkdir -p -m 755 /etc/apt/keyrings
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
-# 공개 키 다운로드                                                       
-curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://dl.k8s.io/apt/doc/apt-key.gpg
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
 
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-
-# k8s 설치
-sudo apt-get install -y kubelet kubeadm kubectl
+systemctl enable --now kubelet
 ```
 ## 5. kubectl 설정
 root 계정이 아닌 다른 계정에서도 kubectl 명령어 사용 가능하도록 설정.
@@ -72,8 +105,7 @@ Calico
 ```bash
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/tigera-operator.yaml
 
-wget https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/custom-resources.yaml
-kubectl apply -f custom-resources.yaml
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/custom-resources.yaml
 ```
 
 Running이 안되면 아래 명령어 사용
@@ -145,7 +177,7 @@ echo 1 > sudo /proc/sys/net/bridge/bridge-nf-call-iptables
 ip_forward 활성화
 ```bash
 echo '1' > sudo /proc/sys/net/ipv4/ip_forward
-sysctl -p
+sudo sysctl -p
 ```
 #### 2. token
 토큰이 만료된 후 새로운 노드를 조인할 토큰 생성
