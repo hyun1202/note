@@ -60,7 +60,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 root 계정이 아닌 다른 계정에서도 kubectl 명령어 사용 가능하도록 설정.
 ```bash
 sudo mkdir -p $HOME/.kube 
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config 
+sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config 
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 ### 5.1 CNI(Container Network Interface) 설정
@@ -130,7 +130,7 @@ kubectl describe pod pod-name
 #### 1. `kubeadm init` 에러
 `/proc/sys/net/bridge/bridge-nf-call-iptables does not exist`와 같은 에러일 경우 
 ```bash
-cat <  /etc/sysctl.d/k8s.conf                                        
+cat <  /etc/sysctl.d/k8s.conf << EOF                                
 net.bridge.bridge-nf-call-ip6tables = 1                              
 net.bridge.bridge-nf-call-iptables = 1                               
 EOF
@@ -142,6 +142,11 @@ sudo modprobe br_netfilter
 echo 1 > sudo /proc/sys/net/bridge/bridge-nf-call-iptables
 ```
 
+ip_forward 활성화
+```bash
+echo '1' > sudo /proc/sys/net/ipv4/ip_forward
+sysctl -p
+```
 #### 2. token
 토큰이 만료된 후 새로운 노드를 조인할 토큰 생성
 
