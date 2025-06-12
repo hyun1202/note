@@ -48,7 +48,15 @@ sysctl -p /etc/sysctl.conf
 ### tshark를 이용한 패킷 캡처
 
 ```bash
-sudo tshark -i any -Y 'tcp.port==5000' -t a --color
+sudo tshark -i any -Y 'tcp.port==8080' -t a --color
+```
+
+```bash
+sudo tshark -i any -Y 'tcp.port==30366 and not ip.src in {10.0.0.0/8}' -t a --color
+```
+
+```bash
+sudo tshark -i any -f "host 0.0.0.0 and port 30366"
 ```
 
 ### tcpdump를 이용한 패킷 캡처

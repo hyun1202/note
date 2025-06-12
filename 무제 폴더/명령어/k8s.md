@@ -70,11 +70,21 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 ```
 Calico
 ```bash
-curl https://docs.projectcalico.org/manifests/calico.yaml -O --insecure 
-kubectl apply -f https://calico-v3-25.netlify.app/archive/v3.25/manifests/calico.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/tigera-operator.yaml
 
+wget https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/custom-resources.yaml
+kubectl apply -f custom-resources.yaml
+```
+
+Running이 안되면 아래 명령어 사용
+```bash
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+```
+
+```bash
 kubectl delete pod --all -n calico-system
 ```
+
 Weave
 ```bash
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
@@ -91,12 +101,31 @@ sudo kubeadm join [ip]:6443 --token [토큰명] --discovery-token-ca-cert-hash [
 ```
 ## 7. Master node 확인
 ```bash
-sudo kubectl get node  
+kubectl get node  
 ```
 or
 ```bash
-sudo kubectl get nodes -o wide
+kubectl get nodes -o wide
 ```
+
+## 8. 명령어
+
+로그확인
+* `namespace`가 `kube-flannel`이고 `name`이 `kube-flannel-ds-mstrw` 인 pod 로그 확인
+```bash
+kubectl logs -f -n kube-flannel kube-flannel-ds-mstrw
+```
+
+모든 pod 확인
+```bash
+kubectl get pods --all-namespaces
+```
+
+pod 정보 확인
+```bash
+kubectl describe pod pod-name
+```
+
 ### 부록
 #### 1. `kubeadm init` 에러
 `/proc/sys/net/bridge/bridge-nf-call-iptables does not exist`와 같은 에러일 경우 
@@ -117,16 +146,29 @@ echo 1 > sudo /proc/sys/net/bridge/bridge-nf-call-iptables
 토큰이 만료된 후 새로운 노드를 조인할 토큰 생성
 
 ```
-$ kubeadm token create
+kubeadm token create
 ```
 
 토큰 조회
 ```
-$ kubeadm token list
+kubeadm token list
 ```
 
 discovery-token-ca-cert-hash 조회
 ```
-$ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | \
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | \
    openssl dgst -sha256 -hex | sed 's/^.* //'
+```
+
+토큰 재생성
+```bash
+kubeadm token create --print-join-command
+```
+
+#### 3. 스케줄링 불가로 인한 pending
+
+* taint로 인해 스케줄링 불가하므로, 제거
+* 마스터 노드는 일반 pod를 막기 때문
+```bash
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 ```
