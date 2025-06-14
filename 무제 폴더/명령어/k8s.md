@@ -148,6 +148,10 @@ kubectl get nodes -o wide
 kubectl logs -f -n kube-flannel kube-flannel-ds-mstrw
 ```
 
+```bash
+kubectl logs -n kube-system kube-apiserver-$(hostname) | tail -20
+```
+
 모든 pod 확인
 ```bash
 kubectl get pods --all-namespaces
@@ -208,4 +212,46 @@ kubeadm token create --print-join-command
 * 마스터 노드는 일반 pod를 막기 때문
 ```bash
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+```
+
+# k8s 삭제
+
+```bash
+# 쿠버네티스 초기화
+sudo kubeadm reset -k
+sudo systemctl stop kubelet
+
+# 모든 iptables 규칙 초기화 (모든 방화벽 규칙 삭제)
+sudo iptables -F
+sudo iptables -t nat -F
+sudo iptables -t mangle -F
+sudo iptables -X
+sudo iptables -t nat -X
+sudo iptables -t mangle -X
+
+sudo iptables -P INPUT ACCEPT
+sudo iptables -P FORWARD ACCEPT
+sudo iptables -P OUTPUT ACCEPT
+
+# 영구 반영
+sudo iptables-save | sudo tee /etc/iptables/rules.v4 > /dev/null
+
+# 쿠버네티스 관련 파일 삭제
+sudo rm -rf /var/lib/cni/
+sudo rm -rf /var/lib/kubelet/*
+sudo rm -rf /var/lib/etcd
+sudo rm -rf /run/flannel
+sudo rm -rf /etc/cni
+sudo rm -rf /etc/kubernetes
+sudo rm -rf ~/.kube
+
+# 쿠버네티스 패키지 삭제
+sudo apt-get purge -y kubeadm
+sudo apt-get purge -y kubectl
+sudo apt-get purge -y kubelet
+sudo apt-get purge -y kubebernetes-cni
+sudo apt-get autoremove -y
+
+# 리부팅
+sudo init 6
 ```

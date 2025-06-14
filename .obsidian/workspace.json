@@ -41,16 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "무제 폴더/명령어/iptables.md",
+                "file": "무제 폴더/명령어/k8s.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "iptables"
+              "title": "k8s"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -103,8 +103,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -193,11 +192,13 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "749388e222f32d75",
+  "active": "2481e58b11cf9a02",
   "lastOpenFiles": [
-    "무제 폴더/명령어/도커 설치.md",
+    "무제 폴더/명령어/k8s 삭제.md",
     "무제 폴더/명령어/k8s.md",
+    "무제 폴더/명령어/minikube.md",
     "무제 폴더/명령어/iptables.md",
+    "무제 폴더/명령어/도커 설치.md",
     "무제 폴더/명령어/Termux.md",
     "무제 폴더/공부/Apache Kafka.md",
     "무제 폴더/트러블 슈팅/OpenVPN 트러블 슈팅 - 외부 통신 문제.md",
@@ -210,7 +211,6 @@
     "cs/클린 아키텍처.md",
     "cs/네트워크",
     "이미지/Pasted image 20250602102321.png",
-    "무제 폴더/명령어/minikube.md",
     "cs/java/자료구조/4. Map.md",
     "cs/java/자료구조/5. Stack, Queue, Deque.md",
     "cs/java/자료구조/8. 컬렉션 유틸.md",
@@ -222,7 +222,6 @@
     "cs/java/자료구조/6. 데이터 순회 (Iterable, Iterator).md",
     "cs/java/jpa/3. 트랜잭션.md",
     "cs/java/예외.md",
-    "cs/java/jpa/2. 커넥션풀.md",
     "cs/java/jpa",
     "이미지/Pasted image 20250502112127.png",
     "cs/java/자료구조",

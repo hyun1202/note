@@ -62,5 +62,5 @@ sudo tshark -i any -f "host 0.0.0.0 and port 30366"
 ### tcpdump를 이용한 패킷 캡처
 
 ```bash
-sudo tcpdump -i any port 5000 -vv -nn
+sudo tcpdump -i any port 6443 -vv -nn
 ```
