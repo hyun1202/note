@@ -1,0 +1,26 @@
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+kubernetesVersion: v1.30.13
+apiServer:
+  timeoutForControlPlane: 4m0s
+  certSANs: # 알맞게 수정
+  - "10.0.0.162"
+  - "127.0.0.1"
+  - "10.96.0.1"
+  - "localhost"
+  - "kubernetes"
+  - "kubernetes.default"
+  - "kubernetes.default.svc"
+  - "kubernetes.default.svc.cluster.local"
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns: {}
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.k8s.io
+networking:
+  dnsDomain: cluster.local
+  serviceSubnet: 10.96.0.0/12
+scheduler: {}
