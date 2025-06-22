@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cs/디자인 패턴/패턴.md",
+                "file": "cs/java/리플렉션.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "패턴"
+              "title": "리플렉션"
             }
           },
           {
@@ -208,8 +208,12 @@
   },
   "active": "a950ffcd67766ab1",
   "lastOpenFiles": [
-    "cs/디자인 패턴/커맨드 패턴.md",
+    "cs/네트워크/3. HTTP.md",
+    "cs/java/리플렉션.md",
+    "cs/네트워크/2. 네트워크 - 프로그램.md",
+    "cs/네트워크/1. 기본 이론.md",
     "cs/디자인 패턴/패턴.md",
+    "cs/디자인 패턴/커맨드 패턴.md",
     "cs/java/프로그래밍 패러다임.md",
     "cs/SOLID 원칙.md",
     "cs/java/구상 클래스.md",
@@ -239,12 +243,8 @@
     "무제 폴더/Prometheus.md",
     "무제 폴더/명령어/그라파나.md",
     "무제 폴더/명령어/Linux.md",
-    "cs/네트워크/2. 네트워크 - 프로그램.md",
-    "cs/네트워크/1. 기본 이론.md",
     "cs/클린 아키텍처.md",
     "이미지/Pasted image 20250602102321.png",
-    "cs/java/자료구조/4. Map.md",
-    "cs/java/자료구조/5. Stack, Queue, Deque.md",
     "이미지/Pasted image 20250502112127.png",
     "Pasted image 20250319113907.png",
     "이미지/Pasted image 20250319113825.png",
