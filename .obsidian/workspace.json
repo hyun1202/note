@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cs/java/리플렉션.md",
+                "file": "cs/java/애노테이션.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "리플렉션"
+              "title": "애노테이션"
             }
           },
           {
@@ -208,8 +208,10 @@
   },
   "active": "a950ffcd67766ab1",
   "lastOpenFiles": [
-    "cs/네트워크/3. HTTP.md",
+    "cs/java/stream/Collector.md",
+    "cs/java/애노테이션.md",
     "cs/java/리플렉션.md",
+    "cs/네트워크/3. HTTP.md",
     "cs/네트워크/2. 네트워크 - 프로그램.md",
     "cs/네트워크/1. 기본 이론.md",
     "cs/디자인 패턴/패턴.md",
@@ -220,7 +222,6 @@
     "cs/java/stream/병렬 스트림.md",
     "cs/java/stream/Optional.md",
     "cs/java/stream/Stream API.md",
-    "cs/java/stream/Collector.md",
     "무제 폴더/명령어/iptables.md",
     "cs/java/stream",
     "무제 폴더/명령어/k8s/k8s-remove.sh",
@@ -243,7 +244,6 @@
     "무제 폴더/Prometheus.md",
     "무제 폴더/명령어/그라파나.md",
     "무제 폴더/명령어/Linux.md",
-    "cs/클린 아키텍처.md",
     "이미지/Pasted image 20250602102321.png",
     "이미지/Pasted image 20250502112127.png",
     "Pasted image 20250319113907.png",
