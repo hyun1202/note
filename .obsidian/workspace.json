@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "무제 폴더/공부/gRPC/gRPC.md",
+                "file": "무제 폴더/공부/logback.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gRPC"
+              "title": "logback"
             }
           }
         ],
@@ -93,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 269.5
+    "width": 269.5,
+    "collapsed": true
   },
   "right": {
     "id": "35fb3bf58e9a05be",
@@ -181,9 +182,11 @@
   },
   "active": "299f6045994b06ca",
   "lastOpenFiles": [
+    "무제 폴더/공부/SAGA 패턴.md",
+    "무제 폴더/공부/logback.md",
+    "무제 폴더/공부/gRPC/gRPC.md",
     "무제 폴더/공부/gRPC/Proto 고급 패턴.md",
     "무제 폴더/공부/gRPC/proto 문법.md",
-    "무제 폴더/공부/gRPC/gRPC.md",
     "무제 폴더/공부/gRPC",
     "무제 폴더/공부/Test.md",
     "무제 폴더/공부/애그리거트(Aggregate).md",
@@ -206,8 +209,6 @@
     "cs/db/격리 수준(Isolation Level)에 따른 이상 현상.md",
     "cs/디자인 패턴/커맨드 패턴.md",
     "cs/디자인 패턴/패턴.md",
-    "cs/디자인 패턴/어댑터 패턴.md",
-    "cs/디자인 패턴/4장.md",
     "cs/java/stream",
     "무제 폴더/명령어/k8s/k8s-remove.sh",
     "무제 폴더/명령어/k8s/k8s-delete.sh",
